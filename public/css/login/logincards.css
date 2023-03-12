@@ -1,0 +1,223 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    align-content: space-around;
+}
+
+/* CSS Part for NFTs Cards Sliders */
+
+.swiper {
+    min-width: 425px;
+}
+
+.swiper-container {
+    text-align: center;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.swiper-wrapper {
+    padding-top: 200px;
+    padding-bottom: 40px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.swiper-wrapper>.swiper-slide-first{ 
+	margin-right:20px;  
+} 
+
+.swiper-wrapper::after, .wrapper::before {
+    box-sizing: border-box;
+}
+
+.swiper-wrapper:focus {
+    outline:0;
+}
+
+.swiper-wrapper input {
+    display: none;
+}
+
+.swiper-slide {
+    background: white;
+    width: 300px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    margin-left: 22px;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 9999;
+    transition: 1s;
+    scroll-snap-align: start;
+}
+
+/* CARDS DESIGN OVERVIEW */
+
+.card-form__image {
+    position: relative;
+    margin-bottom: 25px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.card-form__image--bayc {
+    background: url("/img/bayc-diamonds.png");
+}
+
+.card-form__image--bayc {
+    position: absolute;
+    width: 140px;
+    height: 190px;
+    top: -185px;
+    left: -150px;
+}
+
+.card-form__image--moonbird {
+    background: url("c:/users/full-stack-dev/desktop/fullstack/exercices/nft-discovery/img/moonbird.png");
+}
+
+.card-form__image--moonbird {
+    position: absolute;
+    display: flex;
+    transform: translateY(-300px); 
+}
+
+.nft-item {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.card-form__blockchain {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.card-form__blockchain--eth {
+    color:#cf5fff;
+}
+
+.card-form__unit-name {
+    font-size: 26px;
+    color: black;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.card-form__unit-description {
+    padding: 20px;
+    margin-bottom: 10px; 
+    text-align: center;
+}
+
+.card-form__unit-stats {
+    color: white;
+    font-weight: 700;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card-form__unit-stats .one-third {
+    width: 33%; 
+    float: left;
+    padding: 20px 15px; 
+}
+
+.card-form__unit-stats sup {
+    position: absolute;
+    bottom: 4px;
+    font-size: 45%;
+    margin-left: 2px; 
+}
+
+.card-form__unit-stats .stat {
+    position: relative;
+    bottom: 4px;
+    font-size: 1.5rem; 
+}
+
+.card-form__unit-stats .stat-desc {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card-form__unit-stats .stat-desc1 {
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 8px;
+}
+
+.clash-card__unit-stats .no-border {
+    border-right: none; 
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.card-form__unit-stats--bayc {
+    background: #cf5fff;   
+    transition: 1s;
+}
+
+.card-form__unit-stats--bayc .one-third {
+    border-right: 1px solid #cf5fff;
+}
+
+.card-form__unit-stats--moonbird {
+    background: #cf5fff;
+}
+
+.card-form__unit-stats--moonbird .one-third {
+    border-right: 1px solid #cf5fff; 
+    transition: 1s;
+}
+
+.navigation-manual {
+    margin: 0 auto;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+}
+
+.manual-btn {
+    border: 2px solid #45f3ff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 30px; 
+}
+
+.manual-btn:hover {
+    background: #45f3ff;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -50%;
+}

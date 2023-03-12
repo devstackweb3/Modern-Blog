@@ -1,0 +1,277 @@
+@media only screen and (max-width: 518px) {
+  .marquee {
+      display: none;
+  }
+}
+
+@media only screen and (min-width: 518px) {
+  .marquee-low-sc {
+      display: none;
+  }
+}
+
+  :root {
+    --icon-size: 75px;
+  }
+
+
+  .background {
+    margin: 0;
+    font-size: 42px;
+    font-family: sans-serif;
+    color: #333;
+    overflow: hidden;
+  }
+  
+  .square {
+    position: relative;
+    background: #999;
+    border-radius: 25%;
+    min-width: var(--icon-size);
+    height: var(--icon-size);
+    display: inline-block;
+    margin: 25px 25px;
+    float: left;
+    transition: all .2s ease-out;
+    box-shadow: rgb(255 255 255 / 25%) 0px 1px 1px 0px inset;
+    background: linear-gradient(155.91deg, rgb(24, 25, 28) 21.92%, rgb(33, 34, 37) 77.49%);
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .square-inside {
+    display: block;
+    position: relative;
+    width: var(--icon-size);
+    z-index: 2;
+  }
+
+  .marquee-low-sc {
+    height: 120px;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .marquee-low-sc::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    background: linear-gradient(270deg, rgb(26, 30, 33) 0%, rgba(26, 30, 33, 0) 100%);
+    transform: rotate(-180deg);
+    will-change: transform;
+    width: 165px;
+    height: 100%;
+    z-index: 1;
+}
+
+.marquee-low-sc::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: linear-gradient(270deg, rgb(26, 30, 33) 0%, rgba(26, 30, 33, 0) 100%);
+    width: 165px;
+    height: 100%;
+    z-index: 1;
+}
+
+.marquee-low--inner-left {
+  display: block;
+  width: 200%;
+  height: 100%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  animation: marqueeleft 20s linear infinite;
+}
+
+.marquee-low--inner-right {
+  display: block;
+  width: 200%;
+  height: 100%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: relative;
+  animation: marqueeright 20s linear infinite;
+}
+
+.marquee-low--inner--length {
+  float: initial;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+  .marquee {
+    height: 120px;
+    width: 80%;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .marquee::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      background: linear-gradient(270deg, rgb(26, 30, 33) 0%, rgba(26, 30, 33, 0) 100%);
+      transform: rotate(-180deg);
+      will-change: transform;
+      width: 165px;
+      height: 100%;
+      z-index: 1;
+  }
+  
+  .marquee::after {
+      content: "";
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      background: linear-gradient(270deg, rgb(26, 30, 33) 0%, rgba(26, 30, 33, 0) 100%);
+      width: 165px;
+      height: 100%;
+      z-index: 1;
+  }
+  
+  .marquee--inner-left {
+    display: block;
+    width: 200%;
+    height: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    animation: marqueeleft 20s linear infinite;
+  }
+
+  .marquee--inner-right {
+    display: block;
+    width: 200%;
+    height: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: relative;
+    animation: marqueeright 20s linear infinite;
+  }
+
+  .marquee--inner--length {
+    float: initial;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .thematic-color-green {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(90deg, rgb(255, 248, 85) 0.04%, rgb(70, 227, 183) 46.04%);
+      pointer-events: none;
+      filter: blur(calc(var(--icon-size,120) * 0.2));
+      opacity: 0.7;
+      overflow: visible;
+      z-index: 3;
+  }
+
+  .thematic-color-purple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(90deg, rgb(175, 109, 250) 0.04%, rgb(108, 5, 226) 46.04%);
+    pointer-events: none;
+    filter: blur(calc(var(--icon-size,120) * 0.2));
+    opacity: 0.7;
+    overflow: visible;
+    z-index: 3;
+}
+
+  .thematic-color-orange {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(90deg, rgb(255, 201, 85) 0.04%, rgb(240, 146, 5) 46.04%);
+    pointer-events: none;
+    filter: blur(calc(var(--icon-size,120) * 0.2));
+    opacity: 0.7;
+    overflow: visible;
+    z-index: 3;
+}
+  
+  .thematic-color-pink {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(106.62deg, rgb(232, 78, 56) 6.68%, rgb(186, 44, 184) 82.69%);
+      pointer-events: none;
+      filter: blur(calc(var(--icon-size,120) * 0.2));
+      opacity: 0.7;
+      overflow: visible;
+      z-index: 3;
+  }
+  
+  .thematic-color-blue {
+    position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(106.62deg, rgb(197, 241, 243) 10.68%, rgb(15, 230, 230) 92.69%);
+      pointer-events: none;
+      filter: blur(calc(var(--icon-size,120) * 0.25));
+      opacity: 1;
+      overflow: visible;
+      z-index: 3;
+  }
+  
+  /*.half {
+    float: left;
+    width: 10%;
+  }*/
+
+  .icon-square {
+    display: block;
+    position: relative;
+    width: var(--icon-size);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    max-width: 4rem;
+    max-height: 4rem;
+    z-index: 4;
+  }
+  
+  @keyframes marqueeleft {
+    0% { left: 0; }
+    100% { left: -100%; }
+  }
+
+  @keyframes marqueeright {
+    0% { right: 0; }
+    100% { right: -100%; }
+  }
