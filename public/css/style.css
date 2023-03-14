@@ -584,13 +584,13 @@ header.shadow {
 .footer-container {
     display: flex;
     flex-wrap: wrap; 
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .footer-col-group {
     display: flex;
-    min-width: 335px;
-    justify-content: space-around;
+    min-width: 300px;
+    justify-content: space-between;
 }
 
 .footer-column {
