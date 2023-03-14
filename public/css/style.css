@@ -589,8 +589,8 @@ header.shadow {
 
 .footer-col-group {
     display: flex;
-    flex-direction: column;
-    min-width: 160px;
+    min-width: 335px;
+    justify-content: space-around;
 }
 
 .footer-column {
