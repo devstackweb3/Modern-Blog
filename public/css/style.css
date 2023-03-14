@@ -591,6 +591,7 @@ header.shadow {
     display: flex;
     min-width: 300px;
     justify-content: space-between;
+    margin: 20px;
 }
 
 .footer-column {
