@@ -190,7 +190,9 @@ function generateArticleHTML(article) {
 
   container.appendChild(articleNode)
 
-  generateSousSujetsHTML(article)
+  // generateTableOfContentHTML(article)
+
+  // call la fonction qui genere le contenu ici
 }
 
 // ;<div>{article && <Article />}</div>
@@ -295,24 +297,20 @@ function generateArticleContentHTML(article, articleNode) {
   const container = document.createElement('div')
   container.style.padding = '16px'
 
-  container.classList.add('card-table-parent')
+  const containerClass = ['card-table-parent', 'article-container']
 
-  for (const sujet of sousSujets) {
-    const title = document.createElement('h2')
-    const text = document.createElement('p')
-    title.innerHTML = sujet.title
-    text.innerHTML = sujet.description
-    container.appendChild(title)
-    container.appendChild(text)
-  }
-  console.log(article)
+  container.classList.add(...containerClass)
+
+  generateArticleTableContentHTML(article, container)
+
   articleNode.appendChild(container)
 }
 
 //créer une fonction qui va gérer l'affichage des sous sujets qui prend en parametre un article
 //dans la fonction on doit récupérer depuis l'object "article" les clés "sousSujets"
 // maper sur les sousSujets
-function generateSousSujetsHTML(article) {
+function generateTableOfContentHTML(article) {
+  console.log(article)
   //selecteur de tes container
   const sousSujets = article.sousSujets
   const containers = document.getElementsByClassName('subjects_table')
@@ -324,3 +322,137 @@ function generateSousSujetsHTML(article) {
     }
   }
 }
+
+// une fonction qui génere la table des matiere
+
+// une fonction qui genere l'article
+
+// data : {
+//      description: {
+//       children: children[]
+//       markDefs:[]
+//       style: string
+//     }[],
+//     title: string
+//   }
+//
+
+// sousSujet : {
+//   description: {
+//     children: children[]
+//     markDefs:[]
+//     style: string
+//   }[],
+//   title: string
+// }[]
+
+//une fonction qui va mapper sous la clé sousSujet et appeller pour chacun la fonction ci desous
+
+//container = le container parent, celui ou on veut mettre l'article
+
+const generateArticleTableContentHTML = (article, container) => {
+  console.log(article)
+  const sousSujets = article.sousSujets
+  for (const sousSujet of sousSujets) {
+    generateSousSujetHTML(sousSujet, container)
+  }
+}
+
+const generateSousSujetHTML = (sousSujet, container) => {
+  const contTitle = document.createElement('h2') //devient référence à un élément du DOM "h2"
+
+  contTitle.innerHTML = sousSujet.title //assignation d'une clef avec innerHTML
+  //contTitle.innerHTML(data.title) //appel d'une fonction avec innerHTML
+  container.appendChild(contTitle)
+
+  const containerSujet = document.createElement('p')
+
+  //    sousDesc structure: {
+  //     children: children[]
+  //     markDefs:[]
+  //     style: string
+  //    }
+
+  const description = sousSujet.description
+  for (const sousDesc of description) {
+    const style = sousDesc.style
+
+    let styleHeaderPush //valeur indéfinie le lecteur continue à lire et interpréter styleHeaderPush comme l'équivalent de chaque case jusqu'à la valeur d'attribution trouvée
+    switch (style) {
+      case 'h1':
+        styleHeaderPush = document.createElement('h1')
+        break
+      case 'h2':
+        styleHeaderPush = document.createElement('h2')
+        break
+      case 'h3':
+        styleHeaderPush = document.createElement('h3')
+        break
+      case 'normal':
+        styleHeaderPush = document.createElement('p')
+        break
+      default:
+        styleHeaderPush = document.createElement('p')
+        break
+    }
+
+    // if (style === 'h1') {
+    //   styleHeaderPush === document.createElement('h1')
+    // } else if (style === 'h2') {
+    //   styleHeaderPush === document.createElement('h2')
+    // } else if (style === 'h3') {
+    //   styleHeaderPush === document.createElement('h3')
+    // } else if (style === 'normal') {
+    //   styleHeaderPush === document.createElement('p')
+    // }
+
+    const children = sousDesc.children
+    for (const child of children) {
+      const createSpan = document.createElement('span')
+      const text = child.text
+
+      createSpan.innerHTML = text
+
+      styleHeaderPush.appendChild(createSpan)
+    }
+
+    containerSujet.appendChild(styleHeaderPush)
+
+    //  il faut récupérer le style ( clé .style)
+    // check si c'est un h1, h2, h3, normal ( vérifier les possibilités)
+    // en fonction du style génerer une balise html en conséquence
+
+    // une fois cette balise créée
+    // tu dois maper sur les children
+    // chaque élément aura cette structure:
+    // {
+    //   mark: [],
+    //   text: String,
+    //   _key: String,
+    //   _type: string
+    // }
+
+    // tu dois pour chaque élément pousser le contenu de la clé .text dans la balise que tu as crée plus haut
+    // si probleme, tu peux pour chaque clée .text les mettre dans une nouvelle balise span, que tu pousseras dans ta balise h1,h2 etc que tu as créé a l'étape juste au dessus
+
+    // une fois fait, tu dois pousser ta balise crée plus haut dans ton container containerSujet
+  }
+
+  container.appendChild(containerSujet)
+
+  // const desc =
+}
+
+const generateSousDescHTML = (sousDesc) => {}
+
+// SPREAD OPERATOR JAVASCRIPT
+// const array1 = [1,2,3,4]
+
+// const array2 = [5,6,7,8]
+
+// const array3 = [array1, array2]
+//array3 === [[1,2,3,4], [5,6,7,8]]
+
+// USAGE DU SPREAD OPERATOR QUI PERMET DE
+// const array4 = [...array1, ...array2]
+//array4 === [1,2,3,4,5,6,7,8]

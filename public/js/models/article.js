@@ -35,12 +35,6 @@ export default class Article {
   image = null
 
   /**
-   * List des sous-sujets
-   * @type {Array<SousSujet>}
-   */
-  sousSujets = null
-
-  /**
    * @type {Image}
    */
   tableOfContentImg = null
