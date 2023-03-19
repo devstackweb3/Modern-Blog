@@ -225,7 +225,7 @@ function generateArticleHeaderHTML(article) {
 
   // le titre h1#article-title
   const titleNode = document.createElement('h1')
-  titleNode.id = 'article-title'
+  titleNode.id = 'article-target-title'
   titleNode.innerText = article.title
   headerNode.appendChild(titleNode)
 
@@ -456,3 +456,95 @@ const generateSousDescHTML = (sousDesc) => {}
 // USAGE DU SPREAD OPERATOR QUI PERMET DE
 // const array4 = [...array1, ...array2]
 //array4 === [1,2,3,4,5,6,7,8]
+
+//DISPLAY SIMILAR ARTICLES
+
+let PROJECT_ID = '0867l6ks'
+let DATASET = 'production'
+
+function addArticleToHtml({
+  _id,
+  slug,
+  category,
+  description,
+  title,
+  image,
+  date,
+  auteurArticles: [author],
+}) {
+  // 1 - Récupérer la balise dans laquelle on va mettre les articles
+  // 2 - Insérer l'article dans la balise
+  const container = document.querySelector('.post-container.container')
+  const articleContainer = document.createElement('div')
+  const imageArticle = image.image.asset.url
+  const authorName = author.surname + ' ' + author.name
+
+  articleContainer.classList.add('post-box')
+  articleContainer.classList.add(category.toLowerCase())
+
+  articleContainer.innerHTML = `<a href="article.html?slug=${slug.current}">
+    <div class="post-form">
+     
+        <img src="${imageArticle}" alt="" class="post-img" id="article-img"/>
+        <h2 class="category">${category.toLowerCase()}</h2>
+      <div class="post-title" id="article-title">
+        ${title}
+      </div>
+      <span class="post-date" id="article-date">12 Feb 2022</span>
+      <p class="post-description" id="article-desc">${description}</p>
+      <!-- Profile-->
+      <div class="profile">
+          <img src="img/profile-1.jpg" alt="" class="profile-img" id="authorImg">
+          <span class="profile-name" id="author">${authorName}</span>
+      </div>
+    </div>
+  </a>`
+
+  container.appendChild(articleContainer)
+}
+
+async function fetchDataResArticle() {
+  let QUERY = encodeURIComponent(
+    `*[_type == "article"]{
+      _id,
+      title,
+      date,
+      category,
+      description,
+      slug,
+      sous_sujets,
+      tag,
+      image->{
+        _id, title, tag, image{ asset-> }
+      },
+      tableOfContentImg->{
+        _id, title, image{ asset-> }
+      },
+      auteurArticles[]->{
+        _id, name, surname, job, biography, experience, socials, image{ _id, title, tag, asset-> }
+      },
+    }` // ACHTUNG fait référence au "name:" dans articles.ts || '*[_type == "article" && name == "eth" && date > "2022-01-01"]'
+  )
+
+  const URL = `https://${PROJECT_ID}.api.sanity.io/v2023-10-21/data/query/${DATASET}?query=${QUERY}`
+
+  return new Promise((resolve, reject) => {
+    fetch(URL)
+      .then((data) => data.json())
+      .then(({ result }) => {
+        console.log(result)
+        resolve(result)
+      })
+      //.then((data) => resolve(data.result)) c'est la meme chose qu'au dessus
+      .catch(reject)
+  })
+}
+
+fetchDataResArticle().then((articles) => {
+  if (articles.length > 0) {
+    console.log(articles.length)
+    articles.forEach(addArticleToHtml)
+  } else {
+    displayNoArticlesMsg()
+  }
+})

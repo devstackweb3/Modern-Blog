@@ -26,7 +26,7 @@
 
 :root {
     --container-color: #1a1e21;
-    --second-color: #44defd; 
+    --second-color: #25a6c0; 
     --text-color: #172317;
     --bg-login-btn-hover: linear-gradient(to right, #2ccbeb , #3cd4f2 , #30c5e3 , #08b8db ); 
     --bg-color: #fff; 
@@ -534,6 +534,7 @@ header.shadow {
     text-transform: uppercase;
     font-weight: 400;
     margin-top: 4px;
+    color: var(--second-color)
 }
 
 .post-description {

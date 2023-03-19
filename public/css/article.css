@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
 
 @media only screen and (max-width: 1212px) {
   .article-sidebar {
@@ -46,6 +51,10 @@ body {
 :root {
     --bg-login-btn-hover: linear-gradient(to bottom, #ffffff , #e8f1f349 , #a7e7f467 , #13b9da65 ); 
     --bg-color: rgb(255, 255, 255); 
+    --container-color: #1a1e21;
+    --second-color: #25a6c0; 
+    --text-color: #172317;
+    --icon-size: 75px;
 }
 
 * {
@@ -58,8 +67,6 @@ div {
 
 a {
   text-decoration-line: none;
-  display: flex;
-  align-content: center;
 }
 
 h2 {
@@ -83,6 +90,8 @@ h2 {
 
 .logo-a {
   min-width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 #logo {
@@ -259,7 +268,7 @@ h2 {
     margin: 0 0 0.5rem;
 }
 
-#article-title {
+#article-target-title {
   text-align: center;
   font-weight: 700;
   font-size: clamp(1.2rem,1rem + 6.5vw,4rem);
@@ -683,6 +692,19 @@ body {
   }
 }
 
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+
 .card-timeline {
   margin-top: 30px;
   position: relative;
@@ -701,6 +723,182 @@ body {
     height: 100%;
     position: absolute;
     content: "";
+}
+
+/* Posts */ 
+
+a {
+  cursor: pointer;
+  color: black;
+  text-decoration-line: none;
+}
+
+img {
+  width: 100%
+}
+
+.articles-section {
+  display: flex;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 0.5rem;
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+.post-container {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  width: 990px;
+  gap: 1.5rem;
+  padding: 2rem;
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.container {
+  max-width: 1068px;
+  max-height: 900px;
+  overflow: hidden;
+  margin: auto;
+  width: 100%;
+}
+
+.post-group {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.post-box {
+  box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+  position: relative;
+  padding: 5px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  min-width: 300px;
+  inset: 0;
+}
+
+.post-box:hover:before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 420px;
+  top: -45%;
+  left: -45%;
+  background: linear-gradient(0deg,transparent, #45f3ff, #45f3ff);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+
+.post-box:hover:after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 420px;
+  top: -45%;
+  left: -45%;
+  background: linear-gradient(0deg,transparent, #45f3ff, #45f3ff);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+
+.post-form {
+  position: relative;
+  border-radius: 0.5rem;
+  background: #fff;
+  z-index: 10; 
+  padding: 0.5rem;
+}
+
+.post-form > h2, .post-title, p {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    box-sizing: border-box;
+}
+
+.post-img {
+  width: 100%;
+  height: 150px; 
+  object-fit: cover; 
+  object-position: center; 
+  border-radius: 0.5rem;
+  transition: 1s;
+}
+
+.post-img:hover {
+  transform: scale(1.05);
+  z-index: 4;
+}
+
+.category {
+  font-size: 0.9rem; 
+  font-weight: 500;
+  text-transform: uppercase; 
+  color: var(--second-color);
+}
+
+.post-title {
+  font-size: 1.3rem; 
+  font-weight: 600;
+  color: var(--text-color); 
+  /*To Remain Title in 2 lines*/
+  display: -webkit-box; 
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
+  margin-right: 0.5rem;
+}
+
+.post-date {
+  display: flex;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 4px;
+  font-weight: bold;
+  color: var(--second-color)
+}
+
+.post-description {
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  margin: 5px 0 10px;
+  /* Remain Introduction Text in 3 Lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; 
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--second-color); 
+}
+
+.profile-name {
+  font-size: 0.82rem;
+  font-weight: 500; 
 }
 
 .footer {
