@@ -10,5 +10,6 @@ Storage of articles in the SANITY database side
 
 ### Project Details
 
-Duration Time : 1,5 Month
-Mentored by : EPFL Student
+**Duration Time :** 1,5 Month
+**Habit :** 1-2 hours/daily
+**Mentored by :** EPFL Student
