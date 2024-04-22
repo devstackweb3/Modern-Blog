@@ -15,8 +15,11 @@ Storage of articles in the SANITY database side
 
 ## Client Side <-> Server Side 
 Connected to Vercel hosting services
+
 Learned to establish DNS Configuration (Vercel DNS -> Infomaniak Side)
+
 Learned to connect GIT Repo to Vercel (Import Existing Project)
+
 Discovered the way to realize call APIs to SANITY database (not familiarized with | yet) in the aim to display data's articles
 Struggling with DATA's format consideration.
 
